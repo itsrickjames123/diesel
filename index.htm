@@ -9,38 +9,78 @@
 <body>
   <div class="container">
     <h1>Diesel Injector Doctor</h1>
-    <p>Enter your test bench results below:</p>
     
-    <form id="injectorForm">
-      <div class="form-group">
-        <label for="warm">WARM (OK/FAIL)</label>
-        <select id="warm">
-          <option value="OK">OK</option>
-          <option value="FAIL">FAIL</option>
-        </select>
-      </div>
+    <!-- Step 1: Select Injector Type -->
+    <div id="step1" class="step">
+      <h2>Step 1: Select Injector Type</h2>
+      <select id="injectorType">
+        <option value="bosch">Bosch Common Rail</option>
+        <option value="delphi">Delphi Diesel</option>
+        <option value="denso">Denso HP</option>
+        <option value="other">Other</option>
+      </select>
+      <button type="button" onclick="nextStep(1)">Next</button>
+    </div>
 
-      <div class="form-group">
-        <label for="leak">LEAK (ml/min)</label>
-        <input type="number" id="leak" step="0.1" placeholder="e.g., 2.5">
-      </div>
+    <!-- Step 2: Enter Test Results -->
+    <div id="step2" class="step hidden">
+      <h2>Step 2: Enter Test Results</h2>
+      <form id="testForm">
+        <!-- Dynamic fields will load here based on injector type -->
+        <div id="dynamicFields"></div>
+        <button type="button" onclick="diagnose()">Diagnose</button>
+      </form>
+    </div>
 
-      <div class="form-group">
-        <label for="vl">VL (ml/min)</label>
-        <input type="number" id="vl" step="0.1" placeholder="e.g., 1.0">
-      </div>
+    <!-- Step 3: Diagnosis Results -->
+    <div id="step3" class="step hidden">
+      <h2>Diagnosis Report</h2>
+      <div id="diagnosisResult"></div>
+      <button type="button" onclick="resetApp()">Test Another Injector</button>
+    </div>
+  </div>
 
-      <div class="form-group">
-        <label for="em">EM (ms)</label>
-        <input type="number" id="em" step="0.1" placeholder="e.g., 0.9">
-      </div>
+  <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diesel Injector Doctor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Diesel Injector Doctor</h1>
+    
+    <!-- Step 1: Select Injector Type -->
+    <div id="step1" class="step">
+      <h2>Step 1: Select Injector Type</h2>
+      <select id="injectorType">
+        <option value="bosch">Bosch Common Rail</option>
+        <option value="delphi">Delphi Diesel</option>
+        <option value="denso">Denso HP</option>
+        <option value="other">Other</option>
+      </select>
+      <button type="button" onclick="nextStep(1)">Next</button>
+    </div>
 
-      <button type="button" onclick="diagnose()">Diagnose</button>
-    </form>
+    <!-- Step 2: Enter Test Results -->
+    <div id="step2" class="step hidden">
+      <h2>Step 2: Enter Test Results</h2>
+      <form id="testForm">
+        <!-- Dynamic fields will load here based on injector type -->
+        <div id="dynamicFields"></div>
+        <button type="button" onclick="diagnose()">Diagnose</button>
+      </form>
+    </div>
 
-    <div id="result" class="hidden">
-      <h2>Diagnosis</h2>
-      <div id="diagnosisText"></div>
+    <!-- Step 3: Diagnosis Results -->
+    <div id="step3" class="step hidden">
+      <h2>Diagnosis Report</h2>
+      <div id="diagnosisResult"></div>
+      <button type="button" onclick="resetApp()">Test Another Injector</button>
     </div>
   </div>
 
