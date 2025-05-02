@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diesel Injector Doctor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Diesel Injector Doctor</h1>
+    <p>Enter your test bench results below:</p>
+    
+    <form id="injectorForm">
+      <div class="form-group">
+        <label for="warm">WARM (OK/FAIL)</label>
+        <select id="warm">
+          <option value="OK">OK</option>
+          <option value="FAIL">FAIL</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="leak">LEAK (ml/min)</label>
+        <input type="number" id="leak" step="0.1" placeholder="e.g., 2.5">
+      </div>
+
+      <div class="form-group">
+        <label for="vl">VL (ml/min)</label>
+        <input type="number" id="vl" step="0.1" placeholder="e.g., 1.0">
+      </div>
+
+      <div class="form-group">
+        <label for="em">EM (ms)</label>
+        <input type="number" id="em" step="0.1" placeholder="e.g., 0.9">
+      </div>
+
+      <button type="button" onclick="diagnose()">Diagnose</button>
+    </form>
+
+    <div id="result" class="hidden">
+      <h2>Diagnosis</h2>
+      <div id="diagnosisText"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
